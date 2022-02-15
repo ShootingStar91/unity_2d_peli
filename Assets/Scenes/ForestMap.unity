@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 353037498}
   - component: {fileID: 353037497}
   - component: {fileID: 353037496}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1915,6 +1915,7 @@ GameObject:
   - component: {fileID: 615205369}
   - component: {fileID: 615205368}
   - component: {fileID: 615205367}
+  - component: {fileID: 615205372}
   m_Layer: 0
   m_Name: Unicorn_0
   m_TagString: Untagged
@@ -2050,6 +2051,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &615205372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615205366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eebfb4045aefec4baa6e75a5140d7c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  JumpForce: 7.5
+  Facing: 1
+  MyRigidbody2D: {fileID: 615205369}
+  Feet: {fileID: 615205367}
 --- !u!1 &964208178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,7 +2330,7 @@ TilemapRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 13.5, y: 4.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
