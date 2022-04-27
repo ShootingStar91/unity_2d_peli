@@ -30,11 +30,8 @@ public class MovementScript : MonoBehaviour
 
         if (Feet.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
             animator.SetBool("IsTouchingGround", true);
-            Debug.Log("ground true");
         } else {
             animator.SetBool("IsTouchingGround", false);
-            Debug.Log("ground false");
-
         }
 
         

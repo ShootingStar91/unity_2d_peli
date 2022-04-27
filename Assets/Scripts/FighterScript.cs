@@ -41,13 +41,20 @@ public class FighterScript : MonoBehaviour
             if (Input.GetButtonDown("Fire2")) {
                 Kick();
             }
-            if (Attacking) {
-                if (CooldownTimer > 0) {
-                    CooldownTimer -= Time.deltaTime;
-                } else {
-                    Attacking = false;
-                }
+        }
+
+        if (Attacking) {
+            if (CooldownTimer > 0) {
+                CooldownTimer -= Time.deltaTime;
+            } else {
+                Attacking = false;
             }
+        }
+        if (Input.GetButtonDown("Fire3")) {
+            Block();
+        }
+        if (Input.GetButtonUp("Fire3")) {
+            BlockEnd();
         }
     }
 
@@ -58,6 +65,7 @@ public class FighterScript : MonoBehaviour
         } else {
             Animator.SetTrigger("Punch2");
         }
+        Attack(PunchCheck, PunchDamage);
     }
 
     void Kick() {
@@ -67,7 +75,42 @@ public class FighterScript : MonoBehaviour
         } else {
             Animator.SetTrigger("Kick2");
         }
+        Attack(KickCheck, KickDamage);
+
     }
+
+    void Block() {
+        Animator.SetTrigger("Block");
+        Animator.SetBool("Blocking", true);
+        BlockCheck = true;
+    }
+
+    void BlockEnd() {
+        Animator.SetBool("Blocking", false);
+        BlockCheck = false;
+    }
+
+
+
+    void Attack(Transform Check, float Damage) {
+        Collider2D[] EnemyHit = Physics2D.OverlapCircleAll(Check.position, Range, EnemyLayer);
+
+        if (EnemyHit != null) {
+            foreach(Collider2D Enemy in EnemyHit) {
+                if (Hit == false) {
+                    if (Enemy.gameObject != this.gameObject) {
+                        // Enemy.GetComponent<HealthScript>().TakeDamage(Damage);
+                        Debug.Log("Osuma");
+                        Hit = true;
+                    }
+                }
+            }
+            Hit = false;
+        }
+        Attacking = true;
+        CooldownTimer = Cooldown;
+    }
+
 
     void OnDrawGizmosSelected() {
         if (PunchCheck == null) {
